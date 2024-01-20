@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const NavBarContainer = styled.div<{ mobileMenuVisible: boolean }>`
   display: flex;
@@ -90,6 +91,7 @@ const UserAvatar = styled.img`
 
 const NavBar: React.FC = () => {
   const userAvatarUrl = 'https://via.placeholder.com/30';
+  const navigate = useNavigate()
 
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
@@ -97,13 +99,17 @@ const NavBar: React.FC = () => {
     setMobileMenuVisible(!mobileMenuVisible);
   };
 
+  const handleClick = (path:string) => {
+    navigate(path)
+  }
+
   return (
     <NavBarContainer mobileMenuVisible={mobileMenuVisible}>
       <NavItemsContainer mobileMenuVisible={mobileMenuVisible}>
-        <NavItem>
+        <NavItem onClick={() => handleClick('/')}>
           <FontAwesomeIcon icon={faShoppingCart} /> Products
         </NavItem>
-        <NavItem>
+        <NavItem onClick={() => handleClick('/wishlist')}>
           <FontAwesomeIcon icon={faHeart} /> Wishlist
         </NavItem>
       </NavItemsContainer>
@@ -111,13 +117,13 @@ const NavBar: React.FC = () => {
         <MobileMenuIcon onClick={toggleMobileMenu}>
           <FontAwesomeIcon icon={faBars} size="lg" />
         </MobileMenuIcon>
-        {/* For demo purposes, replace with actual user authentication check */}
+        {/* replace with actual user authentication check */}
         {userAvatarUrl && (
           <Avatar>
             <UserAvatar src={userAvatarUrl} alt="User Avatar" />
           </Avatar>
         )}
-        {/* For demo purposes, replace with actual user authentication check */}
+        {/* replace with actual user authentication check */}
         {!userAvatarUrl && (
           <NavItem>
             <FontAwesomeIcon icon={faUser} /> Login

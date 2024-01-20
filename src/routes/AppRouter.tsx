@@ -4,6 +4,7 @@ import {
   } from "react-router-dom";
 import HomePage from '../components/pages/HomePage';
 import ProductDetailsPage from '../components/pages/ProductDetailsPage'
+import WishlistPage from '../components/pages/WishListPage';
 
 
 const AppRouter = createBrowserRouter([
@@ -14,6 +15,10 @@ const AppRouter = createBrowserRouter([
     {
       path: "/products/:id",
       element: <ProductDetailsPage/>
+    },
+    {
+      path: "/wishlist",
+      element: <WishlistPage/>
     },
   ]);
 
