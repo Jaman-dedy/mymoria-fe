@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
@@ -79,9 +80,14 @@ const HeartIcon = styled(FontAwesomeIcon)`
   }
 `;
 
-const ProductCard: React.FC = () => {
+const ProductCard: React.FC<{ product: { id: number; name: string } }> = ({product}) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/products/${product.id}`)
+  };
   return (
-    <CardContainer>
+    <CardContainer onClick={handleCardClick}>
       <CardImage src="https://via.placeholder.com/300" alt="Product" />
       <CardContent>
         <CardText>Product Name</CardText>

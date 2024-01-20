@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import NavBar from '../../organisms/Navbar';
 import Footer from '../../organisms/Footer';
 import SearchBar from '../../atoms/SearchBar';
@@ -26,7 +27,14 @@ const HomePage: React.FC = () => {
   // Mock data for categories and products
   const categories = ['Electronics', 'Clothing', 'Books'];
   const products:any = [
-    // ... your product data
+    { id: 1, name: 'Product 1' },
+    { id: 2, name: 'Product 2' },
+    { id: 3, name: 'Product 1' },
+    { id: 4, name: 'Product 2' },
+    { id: 5, name: 'Product 1' },
+    { id: 6, name: 'Product 2' },
+    { id: 7, name: 'Product 1' },
+    { id: 8, name: 'Product 2' },
   ];
 
 
@@ -38,15 +46,9 @@ const HomePage: React.FC = () => {
       <SearchBar />
       </HomePageContainer>
         <ProductsContainer>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          {/* Add more ProductCard components as needed */}
+          {products.map((product: any) => (
+            <ProductCard product={product} />
+          ))}
         </ProductsContainer>
       <Footer/>
     </div>
