@@ -1,4 +1,3 @@
-// components/organisms/NavBar.tsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,8 +7,9 @@ const NavBarContainer = styled.div<{ mobileMenuVisible: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 34px;
   background-color: #01a76f;
+  height: 55px;
   color: #fff;
 
   @media (max-width: 768px) {
@@ -66,16 +66,16 @@ const MobileMenuIcon = styled.div`
 const AvatarContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: auto; /* Push the avatar to the right */
+  margin-left: auto;
 
   @media (max-width: 768px) {
-    margin-top: 10px; /* Add margin for spacing on small screens */
+    margin-top: 10px;
   }
 `;
 
 const Avatar = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
   margin-left: 10px;
@@ -89,10 +89,8 @@ const UserAvatar = styled.img`
 `;
 
 const NavBar: React.FC = () => {
-  // For demo purposes, replace with actual user avatar URL
   const userAvatarUrl = 'https://via.placeholder.com/30';
 
-  // State for mobile menu visibility
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   const toggleMobileMenu = () => {

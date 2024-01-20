@@ -1,7 +1,7 @@
-// components/pages/HomePage.tsx
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import NavBar from '../../organisms/Navbar';
+import Footer from '../../organisms/Footer';
 import SearchBar from '../../atoms/SearchBar';
 import CategorySelect from '../../atoms/CategorySelect'
 import ProductCard from '../../molecules/Productcard';
@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
           <ProductCard />
           {/* Add more ProductCard components as needed */}
         </ProductsContainer>
-      
+      <Footer/>
     </div>
   );
 };
