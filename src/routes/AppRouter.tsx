@@ -5,6 +5,7 @@ import {
 import HomePage from '../components/pages/HomePage';
 import ProductDetailsPage from '../components/pages/ProductDetailsPage'
 import WishlistPage from '../components/pages/WishListPage';
+import LoginPage from '../components/pages/LoginPage';
 
 
 const AppRouter = createBrowserRouter([
@@ -19,6 +20,10 @@ const AppRouter = createBrowserRouter([
     {
       path: "/wishlist",
       element: <WishlistPage/>
+    },
+    {
+      path: "/login",
+      element: <LoginPage/>
     },
   ]);
 

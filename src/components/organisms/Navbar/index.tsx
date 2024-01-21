@@ -47,7 +47,7 @@ const NavItem = styled.div`
   }
 
   &:hover {
-    text-decoration: underline;
+    color:  #c2c7c6
   }
 
   @media (max-width: 768px) {
