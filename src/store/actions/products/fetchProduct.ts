@@ -6,6 +6,8 @@ import {
   FETCH_PRODUCTS_FAILURE,
 } from '../../types/productActionTypes';
 
+import { fetchProductsApi } from '../../../helper/fetchApi';
+
 const username = 'admin';
 const password = 'password123';
 const API_URL:any = process.env.REACT_APP_API_URL;
@@ -37,15 +39,7 @@ export const fetchProducts = (category: string) => {
     dispatch(fetchProductsRequest());
 
     try {
-      const response = await fetch(`${API_URL}/products/${category}`, {
-        method: 'GET',
-        headers: headers,
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
-
-      const data = await response.json();
+      const data = await fetchProductsApi(`${API_URL}/products/${category}`, 'GET');
       dispatch(fetchProductsSuccess(data));
     } catch (error: any) {
       dispatch(fetchProductsFailure(error.message));

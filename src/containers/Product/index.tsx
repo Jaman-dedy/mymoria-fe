@@ -18,6 +18,7 @@ const HomeContainer = () => {
       }, []);
 
       useEffect(() => {
+        console.log('selectedCategory :>> ', selectedCategory);
          dispatch(fetchProducts(selectedCategory))
       }, [selectedCategory])
 

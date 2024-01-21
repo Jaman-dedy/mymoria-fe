@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { addToWishlist } from '../../../store/actions/wishlist/addWishList';
+import { useAppDispatch } from '../../../hook/useDispatch'
 
 const CardContainer = styled.div`
   width: 330px;
@@ -119,6 +121,7 @@ interface ProductProps {
 }
 
 const ProductCard: React.FC<ProductProps | any> = ({product}) => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate();
   const {pictures, translations} = product ?? {}
 
@@ -127,6 +130,14 @@ const ProductCard: React.FC<ProductProps | any> = ({product}) => {
       state: product
     })
   };
+
+  const handleAddToWishlist = (e:any) => {
+    e.stopPropagation(); // Prevent navigating to the product detail page
+    // onAddToWishlist(product); // Call the function to add to the wishlist
+    dispatch(addToWishlist(product.id))
+    console.log('added :>> ', product.id);
+  };
+
   return (
     <CardContainer onClick={handleCardClick}>
       <CardImage src={pictures[0].url} alt="Product" />
@@ -139,7 +150,7 @@ const ProductCard: React.FC<ProductProps | any> = ({product}) => {
       <CardActions>
          <WishlistIconContainer>
             <WishlistText>10k</WishlistText>
-            <HeartIcon icon={faHeart} />
+            <HeartIcon onClick={handleAddToWishlist} icon={faHeart} />
           </WishlistIconContainer>
       </CardActions>
     </CardContainer>
