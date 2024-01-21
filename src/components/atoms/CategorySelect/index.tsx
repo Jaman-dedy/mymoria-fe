@@ -30,7 +30,6 @@ const CategorySelect: React.FC<CategorySelectProps> = ({ categories, onChange })
   return (
     <SelectContainer>
       <StyledSelect onChange={(e) => onChange(e.target.value)}>
-        <Option value="">All Categories</Option>
         {categories.map((category, index) => (
           <Option key={index} value={category}>
             {category}

@@ -22,13 +22,13 @@ const ProductsContainer = styled.div`
 `;
 
 interface ProductProps {
-  products: []
+  products: [],
+  selectedCategory: string,
+  setSelectedCategory: (arg: string) => void
 }
 
-const HomePage: React.FC<ProductProps> = ({products}) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
-
-  const categories = ['Electronics', 'Clothing', 'Books'];
+const HomePage: React.FC<ProductProps> = ({products, selectedCategory, setSelectedCategory}) => {
+  const categories = ['coffin', 'flower', 'urn'];
   return (
     <div>
       <NavBar />

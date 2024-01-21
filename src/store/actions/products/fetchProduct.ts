@@ -8,7 +8,7 @@ import {
 
 const username = 'admin';
 const password = 'password123';
-const API_URL = 'http://localhost:3000/api/products/flower';
+const API_URL:any = process.env.REACT_APP_API_URL;
 
 const headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(`${username}:${password}`));
@@ -32,12 +32,12 @@ export const fetchProductsFailure = (error: string) => ({
   payload: error,
 });
 
-export const fetchProducts = () => {
+export const fetchProducts = (category: string) => {
   return async (dispatch: Dispatch<any>) => {
     dispatch(fetchProductsRequest());
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(`${API_URL}/products/${category}`, {
         method: 'GET',
         headers: headers,
       });

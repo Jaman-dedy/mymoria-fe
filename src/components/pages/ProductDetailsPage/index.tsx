@@ -1,33 +1,11 @@
 // components/pages/ProductDetailsPage.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 import NavBar from '../../organisms/Navbar';
 import Footer from '../../organisms/Footer';
-
-const productDetails = {
-  id: 1,
-  name: 'Beautiful Product',
-  shortname: 'Product ABC',
-  description: 'This is a detailed description of the product. It can contain **multiple lines**. ```yes```',
-  price: 99.99,
-  images: [
-    'https://via.placeholder.com/800x600',
-    'https://via.placeholder.com/800x600',
-    'https://via.placeholder.com/800x600',
-    'https://via.placeholder.com/800x600',
-    'https://via.placeholder.com/800x600',
-  ],
-  rating: 4.5,
-  details: {
-    color: 'Blue',
-    size: 'Medium',
-    weight: '1.5 kg',
-    number: '123456',
-  },
-};
 
 const Container = styled.div`
   max-width: 650px;
@@ -155,20 +133,14 @@ const BackButton = styled.button`
 const ProductDetailsPage: React.FC = () => {
     const navigate = useNavigate()
   const location = useLocation();
-  console.log('location :>> ', location);
-  const [previewImage, setPreviewImage] = useState(productDetails.images[0]);
-
   const {state} = location
   const {translations, pictures} = state
+  const [previewImage, setPreviewImage] = useState(pictures[0].url);
+
+  
   const handleGalleryClick = (image: string) => {
     setPreviewImage(image);
   };
-
-  useEffect(() => {
-    setPreviewImage(pictures[0].url)
-  }, [])
-
-  const product = productDetails;
 
   const handleBackButtonClick = () => {
     navigate('/');
