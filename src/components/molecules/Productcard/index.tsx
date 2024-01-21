@@ -80,20 +80,60 @@ const HeartIcon = styled(FontAwesomeIcon)`
   }
 `;
 
-const ProductCard: React.FC<{ product: { id: number; name: string } }> = ({product}) => {
+interface TranslationsProperties {
+  certificate_1: string;
+  certificate_2: string;
+  seo_claim: string;
+  number: string;
+  material: string;
+  color: string;
+  size: string;
+  weight: string;
+  amount: string;
+}
+
+interface Translations {
+  name: string;
+  description: string;
+  locale: string;
+  shortname: string;
+  properties: TranslationsProperties;
+}
+
+interface ProductProps {
+  pictures: Array<{
+    id: string;
+    url: string;
+  }>;
+  previous: string;
+  oldId: number;
+  rating: number;
+  createdAt: number;
+  funeralType: string[];
+  updatedAt: number;
+  category: string;
+  funeralPlan: string[];
+  price: number;
+  id: string;
+  translations?: Translations;
+}
+
+const ProductCard: React.FC<ProductProps | any> = ({product}) => {
   const navigate = useNavigate();
+  const {pictures, translations} = product ?? {}
 
   const handleCardClick = () => {
-    navigate(`/products/${product.id}`)
+    navigate(`/products/${product.id}`, {
+      state: product
+    })
   };
   return (
     <CardContainer onClick={handleCardClick}>
-      <CardImage src="https://via.placeholder.com/300" alt="Product" />
+      <CardImage src={pictures[0].url} alt="Product" />
       <CardContent>
-        <CardText>Product Name</CardText>
+        <CardText>Description</CardText>
         <CardDescription>
-          A brief description of the product. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit.
+          {translations.name}
         </CardDescription>
       </CardContent>
       <CardActions>

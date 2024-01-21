@@ -11,13 +11,14 @@ const HomeContainer = () => {
     const loading = useAppSelector((state: any) => state.products.loading);
 
     useEffect(() => {
-        dispatch(fetchProducts());
-        console.log('here we go :>> ');
+        if(products.length === 0) {
+           dispatch(fetchProducts());
+        }
       }, [dispatch]);
 
       console.log('products :>> ', products);
   return (
-    <HomePage/>
+    <HomePage products={products}/>
   )
 }
 

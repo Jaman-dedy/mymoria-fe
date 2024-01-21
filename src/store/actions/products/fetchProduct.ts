@@ -6,7 +6,12 @@ import {
   FETCH_PRODUCTS_FAILURE,
 } from '../../types/productActionTypes';
 
+const username = 'admin';
+const password = 'password123';
 const API_URL = 'http://localhost:3000/api/products/flower';
+
+const headers = new Headers();
+headers.set('Authorization', 'Basic ' + btoa(`${username}:${password}`));
 
 interface Product {
   id: number;
@@ -32,7 +37,10 @@ export const fetchProducts = () => {
     dispatch(fetchProductsRequest());
 
     try {
-      const response = await fetch(API_URL);
+      const response = await fetch(API_URL, {
+        method: 'GET',
+        headers: headers,
+      });
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }

@@ -1,7 +1,7 @@
 // components/pages/ProductDetailsPage.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 import NavBar from '../../organisms/Navbar';
@@ -154,12 +154,19 @@ const BackButton = styled.button`
 
 const ProductDetailsPage: React.FC = () => {
     const navigate = useNavigate()
-  const { id } = useParams<{ id: string }>();
+  const location = useLocation();
+  console.log('location :>> ', location);
   const [previewImage, setPreviewImage] = useState(productDetails.images[0]);
 
+  const {state} = location
+  const {translations, pictures} = state
   const handleGalleryClick = (image: string) => {
     setPreviewImage(image);
   };
+
+  useEffect(() => {
+    setPreviewImage(pictures[0].url)
+  }, [])
 
   const product = productDetails;
 
@@ -174,42 +181,42 @@ const ProductDetailsPage: React.FC = () => {
         <BackButton onClick={handleBackButtonClick}>
         &lt; Back
       </BackButton>
-      <ProductName>{product.name}</ProductName>
-      <Price>${product.price.toFixed(2)}</Price>
+      <ProductName>{translations.shortname}</ProductName>
+      <Price>${state.price.toFixed(2)}</Price>
       <RatingContainer>
         <RatingStar>⭐</RatingStar>
-        <span>{product.rating}</span>
+        <span>{state.rating}</span>
       </RatingContainer>
       <DescriptionContainer>
-        <ReactMarkdown>{product.description}</ReactMarkdown>
+        <ReactMarkdown>{translations.description}</ReactMarkdown>
       </DescriptionContainer>
       <PreviewContainer>
         <PreviewImage src={previewImage} alt="Product Preview" />
       </PreviewContainer>
       <GalleryContainer>
-        {product.images.map((image, index) => (
+        { pictures.length && pictures.map((image:any, index:any) => (
           <GalleryImage
             key={index}
-            src={image}
+            src={image.url}
             alt={`Product ${index + 1}`}
-            onClick={() => handleGalleryClick(image)}
+            onClick={() => handleGalleryClick(image.url)}
           />
         ))}
       </GalleryContainer>
       <p>
-        <strong>Shortname:</strong> {product.shortname}
+        <strong>Shortname:</strong> {translations.shortname}
       </p>
       <p>
-        <strong>Color:</strong> {product.details.color}
+        <strong>Color:</strong> {translations.properties?.color}
       </p>
       <p>
-        <strong>Size:</strong> {product.details.size}
+        <strong>Size:</strong> {translations.properties?.size}
       </p>
       <p>
-        <strong>Weight:</strong> {product.details.weight}
+        <strong>Weight:</strong> {translations.properties?.weight}
       </p>
       <p>
-        <strong>Number:</strong> {product.details.number}
+        <strong>Number:</strong> {translations.properties?.number}
       </p>
       <WishlistButton>Add to Wishlist</WishlistButton>
     </Container>
