@@ -1,17 +1,11 @@
 // src/store.ts
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './reducers';
 
-// Define your initial state and reducer function
-const initialState = {
-  // Your initial state here
-};
+export const store = configureStore({
+  reducer: rootReducer,
+});
 
-const rootReducer = (state = initialState, action: any) => {
-  // Handle actions and update state
-  return state;
-};
-
-// Create the Redux store
-const store = createStore(rootReducer);
-
-export default store;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
