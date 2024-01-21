@@ -4,8 +4,8 @@ import {
   } from "react-router-dom";
 import HomeContainer from '../containers/Product';
 import ProductDetailsPage from '../components/pages/ProductDetailsPage'
-import WishlistPage from '../components/pages/WishListPage';
 import LoginPage from '../components/pages/LoginPage';
+import WishListContainer from '../containers/Wishlist';
 
 
 const AppRouter = createBrowserRouter([
@@ -19,7 +19,7 @@ const AppRouter = createBrowserRouter([
     },
     {
       path: "/wishlist",
-      element: <WishlistPage/>
+      element: <WishListContainer/>
     },
     {
       path: "/login",

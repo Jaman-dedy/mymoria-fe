@@ -4,9 +4,9 @@ import {
   ADD_WISHLIST_REQUEST,
   ADD_WISHLIST_SUCCESS,
   ADD_WISHLIST_FAILURE,
-} from '../../types/addWishListActionTypes';
+} from '../../types/wishlistActionTypes';
 
-import { fetchProductsApi } from '../../../helper/fetchApi';
+import { fetchApi } from '../../../helper/fetchApi';
 
 const username = 'admin';
 const password = 'password123';
@@ -15,18 +15,13 @@ const API_URL:any = process.env.REACT_APP_API_URL;
 const headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(`${username}:${password}`));
 
-interface Product {
-  id: number;
-  name: string;
-}
-
 export const addToWishListRequest = () => ({
   type: ADD_WISHLIST_REQUEST,
 });
 
-export const addToWishlistSuccess = (products: Product[]) => ({
+export const addToWishlistSuccess = (productId: string) => ({
   type: ADD_WISHLIST_SUCCESS,
-  payload: products,
+  payload: productId,
 });
 
 export const addToWishlistFailure = (error: string) => ({
@@ -39,7 +34,7 @@ export const addToWishlist = (productId: string) => {
       dispatch(addToWishListRequest());
   
       try {
-        const data = await fetchProductsApi(`${API_URL}/wishlist/add`, 'POST', {productId});
+        const data = await fetchApi(`${API_URL}/wishlist/add`, 'POST', {productId});
         dispatch(addToWishlistSuccess(data));
       } catch (error: any) {
         dispatch(addToWishlistFailure(error.message));

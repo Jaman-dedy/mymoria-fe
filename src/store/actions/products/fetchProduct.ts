@@ -6,14 +6,9 @@ import {
   FETCH_PRODUCTS_FAILURE,
 } from '../../types/productActionTypes';
 
-import { fetchProductsApi } from '../../../helper/fetchApi';
+import { fetchApi } from '../../../helper/fetchApi';
 
-const username = 'admin';
-const password = 'password123';
 const API_URL:any = process.env.REACT_APP_API_URL;
-
-const headers = new Headers();
-headers.set('Authorization', 'Basic ' + btoa(`${username}:${password}`));
 
 interface Product {
   id: number;
@@ -39,7 +34,7 @@ export const fetchProducts = (category: string) => {
     dispatch(fetchProductsRequest());
 
     try {
-      const data = await fetchProductsApi(`${API_URL}/products/${category}`, 'GET');
+      const data = await fetchApi(`${API_URL}/products/${category}`, 'GET');
       dispatch(fetchProductsSuccess(data));
     } catch (error: any) {
       dispatch(fetchProductsFailure(error.message));

@@ -88,47 +88,12 @@ const ArrowIcon = styled.span`
   margin-right: 5px;
 `;
 
-const WishlistPage: React.FC = () => {
-  const navigate = useNavigate();
+interface WishListItems {
+  wishlist: [] | any
+}
 
-  const wishlistItems = [
-    {
-      id: 1,
-      name: 'Product 1',
-      image: 'https://via.placeholder.com/150',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      image: 'https://via.placeholder.com/150',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      image: 'https://via.placeholder.com/150',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      image: 'https://via.placeholder.com/150',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      image: 'https://via.placeholder.com/150',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      image: 'https://via.placeholder.com/150',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-    },
-  ];
+const WishlistPage: React.FC<WishListItems> = ({wishlist}) => {
+  const navigate = useNavigate();
 
   const handleRemoveItem = (itemId: number) => {
   };
@@ -141,12 +106,12 @@ const WishlistPage: React.FC = () => {
         <ArrowIcon>&lt;</ArrowIcon> Back
       </BackButton>
       <WishlistTitle>My Wishlist</WishlistTitle>
-      {wishlistItems.map((item) => (
+      {wishlist.length > 0 && wishlist.map((item: any) => (
         <WishlistItem key={item.id}>
-          <ItemImage src={item.image} alt={item.name} />
+          <ItemImage src={item.pictures[0]?.url} alt={item.translations?.name} />
           <ItemDetails>
-            <ItemName>{item.name}</ItemName>
-            <ItemDescription>{item.description}</ItemDescription>
+            <ItemName>{item.translations?.shortname}</ItemName>
+            <ItemDescription>{item.translations?.name}</ItemDescription>
           </ItemDetails>
           <RemoveButton onClick={() => handleRemoveItem(item.id)}>
             <FontAwesomeIcon icon={faTrash} />

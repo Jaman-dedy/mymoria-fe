@@ -1,29 +1,31 @@
-// src/reducers/addTowishlistreducer.ts
+// src/reducers/fetchWishList.ts
 import {
-    ADD_WISHLIST_REQUEST,
-    ADD_WISHLIST_SUCCESS,
-    ADD_WISHLIST_FAILURE,
+    FETCH_WISHLIST_REQUEST,
+    FETCH_WISHLIST_SUCCESS,
+    FETCH_WISHLIST_FAILURE,
   } from '../types/wishlistActionTypes';
   
   const initialState = {
-    productId: '',
+    wishlist: [],
+    loading: false,
+    error: null,
   };
   
-  const addToshWishListReducer = (state = initialState, action: any) => {
+  const wishListReducer = (state = initialState, action: any) => {
     switch (action.type) {
-      case ADD_WISHLIST_REQUEST:
+      case FETCH_WISHLIST_REQUEST:
         return {
           ...state,
           loading: true,
           error: null,
         };
-      case ADD_WISHLIST_SUCCESS:
+      case FETCH_WISHLIST_SUCCESS:
         return {
           ...state,
           loading: false,
-          products: action.payload,
+          wishlist: action.payload?.wishlistItems,
         };
-      case ADD_WISHLIST_FAILURE:
+      case FETCH_WISHLIST_FAILURE:
         return {
           ...state,
           loading: false,
@@ -34,5 +36,5 @@ import {
     }
   };
   
-  export default addToshWishListReducer;
+  export default wishListReducer;
   

@@ -4,7 +4,7 @@ const password = 'password123';
 const headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(`${username}:${password}`));
 
-export const fetchProductsApi = async (url:string, method:string, data?:any) => {
+export const fetchApi = async (url:string, method:string, data?:any) => {
   const response = await fetch(url, {
     method,
     headers: {
