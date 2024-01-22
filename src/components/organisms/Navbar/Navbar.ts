@@ -103,8 +103,9 @@ export const DropdownContainer = styled.div`
   position: absolute;
   top: 50px;
   right: 0;
+  width: 125px;
   background-color: #fff;
-  padding: 10px;
+  padding: 25px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 2;
@@ -113,7 +114,7 @@ export const DropdownContainer = styled.div`
 export const DropdownItem = styled.div`
   cursor: pointer;
   color: #0D0C22;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   font-weight: 500;
 
   &:last-child {
