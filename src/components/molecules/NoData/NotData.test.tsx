@@ -6,7 +6,6 @@ import NodataFound from './index';
 test('renders NoDataFound component', () => {
   render(<NodataFound />);
 
-  // Check if the NoDataFound component is rendered
   const noDataIcon = screen.getByAltText('No data found');
   expect(noDataIcon).toBeInTheDocument();
 
