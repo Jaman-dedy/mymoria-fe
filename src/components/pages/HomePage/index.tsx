@@ -20,13 +20,13 @@ const HomePage: React.FC<ProductProps> = ({products, selectedCategory, setSelect
       <CategorySelect categories={categories} onChange={setSelectedCategory} />
       <SearchBar />
       </HomePageContainer>
-        {/* <ProductsContainer>
+        <ProductsContainer>
           { Array.isArray(products) && products.length > 0 && products.map((product: any) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </ProductsContainer> */}
+        </ProductsContainer>
         {
-          Array.isArray(products) && products.length > 0 && (
+          Array.isArray(products) && products.length === 0 && (
             <NodataFound/>
           )
         }
