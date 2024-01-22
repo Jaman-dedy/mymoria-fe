@@ -4,6 +4,7 @@ import CategorySelect from '../../atoms/CategorySelect'
 import ProductCard from '../../molecules/Productcard';
 import { HomePageContainer, ProductsContainer } from './HomeStyles';
 import MainTemplate from '../../template/MainTemplate';
+import NodataFound from '../../molecules/NoData';
 
 interface ProductProps {
   products: [],
@@ -19,11 +20,16 @@ const HomePage: React.FC<ProductProps> = ({products, selectedCategory, setSelect
       <CategorySelect categories={categories} onChange={setSelectedCategory} />
       <SearchBar />
       </HomePageContainer>
-        <ProductsContainer>
-          {products && products?.map((product: any) => (
+        {/* <ProductsContainer>
+          { Array.isArray(products) && products.length > 0 && products.map((product: any) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </ProductsContainer>
+        </ProductsContainer> */}
+        {
+          Array.isArray(products) && products.length > 0 && (
+            <NodataFound/>
+          )
+        }
     </MainTemplate>
   );
 };
