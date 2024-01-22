@@ -3,6 +3,7 @@ import {
     ADD_WISHLIST_REQUEST,
     ADD_WISHLIST_SUCCESS,
     ADD_WISHLIST_FAILURE,
+    ADD_WISHLIST_CLEAR,
   } from '../types/wishlistActionTypes';
   
   const initialState = {
@@ -21,13 +22,26 @@ import {
         return {
           ...state,
           loading: false,
-          products: action.payload,
+          products: action.payload.data,
+          productId: action.payload.productId,
+          success: true,
+          wishlists: {
+            wishlist: action.payload?.wishlist?.products
+          }
         };
       case ADD_WISHLIST_FAILURE:
         return {
           ...state,
           loading: false,
           error: action.payload,
+        };
+      case ADD_WISHLIST_CLEAR:
+        return {
+          ...state,
+          loading: false,
+          error: null,
+          products: null,
+          success: false,
         };
       default:
         return state;

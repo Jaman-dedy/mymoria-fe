@@ -4,6 +4,7 @@ import {
   REMOVE_WISHLIST_REQUEST,
   REMOVE_WISHLIST_SUCCESS,
   REMOVE_WISHLIST_FAILURE,
+  REMOVE_WISHLIST_CLEAR,
 } from '../../types/wishlistActionTypes';
 
 import { fetchApi } from '../../../helper/fetchApi';
@@ -21,6 +22,10 @@ export const removeToWishlistFailure = (error: string) => ({
   type: REMOVE_WISHLIST_FAILURE,
   payload: error,
 });
+
+export const clearRemoveWishList = () => ({
+  type: REMOVE_WISHLIST_CLEAR
+})
 
 export const removeToWishlist = (productId: string) => {
     return async (dispatch: Dispatch<any>) => {

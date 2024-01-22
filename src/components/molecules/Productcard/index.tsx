@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
+
 import { addToWishlist } from '../../../store/actions/wishlist/addWishList';
-import { useAppDispatch } from '../../../hook/useDispatch'
+import { useAppDispatch, useAppSelector } from '../../../hook/useDispatch'
 import { CardContainer, CardImage, CardContent, CardText, CardDescription, CardActions, WishlistIconContainer, HeartIcon, WishlistText } from './CardStyles'
 import { ProductProps } from '../../../types';
 
@@ -10,6 +12,7 @@ import { ProductProps } from '../../../types';
 const ProductCard: React.FC<ProductProps | any> = ({ product }) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate();
+  const wishlist = useAppSelector((state: any) => state.wishLists.wishlist);
   const { pictures, translations } = product ?? {}
 
   const handleCardClick = () => {
@@ -21,6 +24,10 @@ const ProductCard: React.FC<ProductProps | any> = ({ product }) => {
   const handleAddToWishlist = (e: any) => {
     e.stopPropagation();
     dispatch(addToWishlist(product.id))
+  };
+
+  const isProductInWishlist = (productId: string) => {
+    return wishlist.some((item:any) => item.id === productId);
   };
 
   return (
@@ -35,7 +42,11 @@ const ProductCard: React.FC<ProductProps | any> = ({ product }) => {
       <CardActions>
         <WishlistIconContainer>
           <WishlistText>10k</WishlistText>
-          <HeartIcon onClick={handleAddToWishlist} icon={faHeart} />
+          <HeartIcon 
+          onClick={handleAddToWishlist} 
+          wishlisted={isProductInWishlist(product.id)}
+          icon={faHeart} 
+          />
         </WishlistIconContainer>
       </CardActions>
     </CardContainer>

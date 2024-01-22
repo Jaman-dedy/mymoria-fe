@@ -4,6 +4,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {store} from './store/store';
 import './index.css';
 import AppRouter from './routes/AppRouter';
@@ -16,6 +19,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={AppRouter} />
+      <ToastContainer/>
     </Provider>
   </React.StrictMode>
 );

@@ -12,7 +12,7 @@ interface ProductProps {
 }
 
 const HomePage: React.FC<ProductProps> = ({products, selectedCategory, setSelectedCategory}) => {
-  const categories = ['coffin', 'flower', 'urn'];
+  const categories = ['urn', 'flower', 'coffin'];
   return (
     <MainTemplate>
       <HomePageContainer>
@@ -21,7 +21,7 @@ const HomePage: React.FC<ProductProps> = ({products, selectedCategory, setSelect
       </HomePageContainer>
         <ProductsContainer>
           {products && products?.map((product: any) => (
-            <ProductCard product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </ProductsContainer>
     </MainTemplate>

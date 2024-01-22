@@ -4,6 +4,7 @@ import {
   ADD_WISHLIST_REQUEST,
   ADD_WISHLIST_SUCCESS,
   ADD_WISHLIST_FAILURE,
+  ADD_WISHLIST_CLEAR,
 } from '../../types/wishlistActionTypes';
 
 import { fetchApi } from '../../../helper/fetchApi';
@@ -18,9 +19,9 @@ export const addToWishListRequest = () => ({
   type: ADD_WISHLIST_REQUEST,
 });
 
-export const addToWishlistSuccess = (productId: string) => ({
+export const addToWishlistSuccess = (data:any, productId: string) => ({
   type: ADD_WISHLIST_SUCCESS,
-  payload: productId,
+  payload: {data, productId}
 });
 
 export const addToWishlistFailure = (error: string) => ({
@@ -28,13 +29,17 @@ export const addToWishlistFailure = (error: string) => ({
   payload: error,
 });
 
+export const clearAddWishList = () => ({
+  type: ADD_WISHLIST_CLEAR
+})
+
 export const addToWishlist = (productId: string) => {
     return async (dispatch: Dispatch<any>) => {
       dispatch(addToWishListRequest());
   
       try {
         const data = await fetchApi(`/wishlist/add`, 'POST', {productId});
-        dispatch(addToWishlistSuccess(data));
+        dispatch(addToWishlistSuccess(data, productId));
       } catch (error: any) {
         dispatch(addToWishlistFailure(error.message));
       }

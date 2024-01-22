@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
+interface HeartIconProps {
+  wishlisted: boolean;
+}
+
 export const CardContainer = styled.div`
   width: 330px;
   border: 1px solid #ddd;
@@ -69,10 +74,11 @@ export const WishlistText = styled.span`
   margin-right: 5px;
 `;
 
-export const HeartIcon = styled(FontAwesomeIcon)`
+export const HeartIcon = styled(FontAwesomeIcon)<HeartIconProps>`
   font-size: 20px;
-  color: #ccc;
   transition: color 0.3s;
+  color: ${(props) => (props.wishlisted ? '#e74c3c' : '#ccc')};
+
   ${WishlistIconContainer}:hover & {
     color: #e74c3c; 
   }
