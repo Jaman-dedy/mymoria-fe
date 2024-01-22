@@ -1,83 +1,8 @@
 // components/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { Container, ForgotPasswordButton, Input, Label, LeftSide, LoginButton, RightSide, Title, Form, MessageContainer, AnimatedVideo } from './LoginStyles';
 
-const Container = styled.div`
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-`;
-
-const LeftSide = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #006644;
-  width: 30%
-`;
-
-const AnimatedImage = styled.img`
-  max-width: 100%;
-  height: auto;
-`;
-
-const RightSide = styled.div`
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Title = styled.h2`
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-`;
-
-const LoginButton = styled.button`
-  background-color: #01a76f;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #006644;
-  }
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Label = styled.label`
-  font-size: 16px;
-  margin-bottom: 5px;
-`;
-
-const Input = styled.input`
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-`;
-
-
-const ForgotPasswordButton = styled.button`
-  color: #006644;
-  text-decoration: underline;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-`;
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate()
@@ -102,13 +27,24 @@ const LoginPage: React.FC = () => {
   return (
     <Container>
       <LeftSide>
-        <AnimatedImage
-          src="https://via.placeholder.com/300"
-          alt="Animated Image"
-        />
+        <AnimatedVideo
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source
+            src="https://res.cloudinary.com/dvx8vwgk6/video/upload/v1705896244/pexels-mario-wallner-12393546_animation_sdhcwk.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </AnimatedVideo>
       </LeftSide>
       <RightSide>
         <Title>Sign in to Mymoria</Title>
+        <MessageContainer>
+          username: admin, password: password123
+        </MessageContainer>
         <Form onSubmit={handleLogin}>
           <Label htmlFor="username">Username</Label>
           <Input

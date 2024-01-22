@@ -1,6 +1,5 @@
 // components/organisms/Footer.tsx
 import React from 'react';
-import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -8,48 +7,8 @@ import {
   faInstagram,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
+import { FooterContainer, MenuItems, SocialIcons } from './Footer';
 
-const FooterContainer = styled.div`
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-`;
-
-const SocialIcons = styled.div`
-  margin-bottom: 20px;
-
-  a {
-    color: #fff;
-    margin: 0 10px;
-    font-size: 20px;
-    text-decoration: none;
-
-    &:hover {
-      color: #01a76f;
-    }
-  }
-`;
-
-const MenuItems = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    display: inline-block;
-    margin-right: 20px;
-
-    a {
-      color: #fff;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-`;
 
 const Footer: React.FC = () => {
   return (
