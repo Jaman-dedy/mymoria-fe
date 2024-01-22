@@ -5,9 +5,10 @@ export const NavBarContainer = styled.div<{ mobileMenuVisible: boolean }>`
   justify-content: space-between;
   align-items: center;
   padding: 10px 34px;
-  background-color: #01a76f;
+  background-color: #fff;
   height: 55px;
-  color: #fff;
+  color: #0D0C22;
+  font-weight: 500;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -28,7 +29,7 @@ export const NavItemsContainer = styled.div<{ mobileMenuVisible: boolean }>`
     right: 0;
     left: 0;
     width: 100%;
-    background-color: #01a76f;
+    background-color: #fff;
     padding: 10px 20px;
     z-index: 1;
   }
@@ -40,10 +41,11 @@ export const NavItem = styled.div`
 
   &:last-child {
     margin-right: 0;
+    cursor: pointer;
   }
 
   &:hover {
-    color: #c2c7c6;
+    color: #414242;
   }
 
   @media (max-width: 768px) {
@@ -64,12 +66,23 @@ export const AvatarContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-  position: relative; /* Added for positioning the dropdown */
+  position: relative;
 
   @media (max-width: 768px) {
     margin-top: 10px;
   }
 `;
+
+export const LogoImgContainer = styled.div`
+width: 200px;
+height: 200px;
+&:hover {
+    cursor: pointer;
+  }
+`
+export const LogoImg = styled.img`
+width: 100%;
+`
 
 export const Avatar = styled.div`
   width: 45px;
@@ -88,9 +101,9 @@ export const UserAvatar = styled.img`
 
 export const DropdownContainer = styled.div`
   position: absolute;
-  top: 50px; /* Adjust the distance from the avatar */
+  top: 50px;
   right: 0;
-  background-color: #01a76f;
+  background-color: #fff;
   padding: 10px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -99,14 +112,15 @@ export const DropdownContainer = styled.div`
 
 export const DropdownItem = styled.div`
   cursor: pointer;
-  color: #fff;
+  color: #0D0C22;
   margin-bottom: 8px;
+  font-weight: 500;
 
   &:last-child {
     margin-bottom: 0;
   }
 
   &:hover {
-    color: #c2c7c6;
+    color: #414242;
   }
 `;

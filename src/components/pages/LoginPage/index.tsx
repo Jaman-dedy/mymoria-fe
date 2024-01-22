@@ -14,6 +14,7 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     if (username === process.env.REACT_APP_USERNAME && password === process.env.REACT_APP_PASSWORD) {
       localStorage.setItem('authenticatedUser', JSON.stringify({ username, password }));
+
       navigate('/')
       setError('');
       console.log('Authentication successful');
@@ -50,14 +51,28 @@ const LoginPage: React.FC = () => {
           <Input
             type="text"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {
+              setUsername(e.target.value)
+              setError('')
+            }}
           />
           <Label htmlFor="password">Password</Label>
           <Input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value)
+              setError('')
+            }}
           />
+          {
+            error && (
+              <MessageContainer status="error">
+                {error}
+              </MessageContainer>
+            )
+          }
+
           <ForgotPasswordButton>Forgot password?</ForgotPasswordButton>
           <LoginButton type="submit" >Login</LoginButton>
         </Form>

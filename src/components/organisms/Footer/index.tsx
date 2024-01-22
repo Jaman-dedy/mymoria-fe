@@ -1,5 +1,5 @@
-// components/organisms/Footer.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -9,36 +9,35 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FooterContainer, MenuItems, SocialIcons } from './Footer';
 
-
 const Footer: React.FC = () => {
   return (
     <FooterContainer>
       <SocialIcons>
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        <Link to="#" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faFacebook} />
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        </Link>
+        <Link to="#" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faTwitter} />
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        </Link>
+        <Link to="#" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faInstagram} />
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        </Link>
+        <Link to="#" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faLinkedin} />
-        </a>
+        </Link>
       </SocialIcons>
       <MenuItems>
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">About Us</a>
+          <Link to="/about">About Us</Link>
         </li>
         <li>
-          <a href="#">Products</a>
+          <Link to="/products">Products</Link>
         </li>
         <li>
-          <a href="#">Contact</a>
+          <Link to="/contact">Contact</Link>
         </li>
       </MenuItems>
       <p>&copy; 2024 Mymoria. All rights reserved.</p>

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart, faUser, faBars, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { Avatar, AvatarContainer, DropdownContainer, DropdownItem, MobileMenuIcon, NavBarContainer, NavItem, NavItemsContainer, UserAvatar } from './Navbar';
+import { Avatar, AvatarContainer, DropdownContainer, DropdownItem, LogoImg, LogoImgContainer, MobileMenuIcon, NavBarContainer, NavItem, NavItemsContainer, UserAvatar } from './Navbar';
+import logoImg from '../../../assets/logo.png'
 
 
 const NavBar: React.FC = () => {
@@ -39,6 +40,9 @@ const NavBar: React.FC = () => {
   return (
     <NavBarContainer onClick={handleCloseDropdown} mobileMenuVisible={mobileMenuVisible}>
       <NavItemsContainer mobileMenuVisible={mobileMenuVisible}>
+        <LogoImgContainer>
+          <LogoImg src={logoImg} alt="" />
+        </LogoImgContainer>
         <NavItem onClick={() => handleClick('/')}>
           <FontAwesomeIcon icon={faShoppingCart} /> Products
         </NavItem>

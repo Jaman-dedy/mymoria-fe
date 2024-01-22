@@ -1,6 +1,8 @@
 // components/atoms/SearchBar.tsx
 import React from 'react';
-import { SearchContainer, SearchInput } from './SearchbarStyles';
+import { SearchContainer, SearchIcon, SearchInput } from './SearchbarStyles';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 interface SearchBarProps {
@@ -15,9 +17,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     <SearchContainer>
       <SearchInput
         type="text"
-        placeholder="Search products..."
+        placeholder="Search..."
         onChange={handleInputChange}
       />
+      <SearchIcon>
+        <FontAwesomeIcon icon={faSearch} />
+      </SearchIcon>
     </SearchContainer>
   );
 };

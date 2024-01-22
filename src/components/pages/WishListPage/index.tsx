@@ -4,10 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import {  useAppDispatch } from '../../../hook/useDispatch'
-import Footer from '../../organisms/Footer';
-import NavBar from '../../organisms/Navbar';
 import { removeToWishlist } from '../../../store/actions/wishlist/removeWishList';
 import { ArrowIcon, BackButton, Container, ItemDescription, ItemDetails, ItemImage, ItemName, RemoveButton, WishlistItem, WishlistTitle } from './WishListStyles';
+import MainTemplate from '../../template/MainTemplate';
 
 
 interface WishListItems {
@@ -30,8 +29,7 @@ const WishlistPage: React.FC<WishListItems> = ({wishlist}) => {
   }
 
   return (
-    <div>
-        <NavBar/>
+    <MainTemplate>
        <Container>
       <BackButton onClick={() => navigate(-1)}>
         <ArrowIcon>&lt;</ArrowIcon> Back
@@ -50,8 +48,7 @@ const WishlistPage: React.FC<WishListItems> = ({wishlist}) => {
         </WishlistItem>
       ))}
     </Container> 
-    <Footer/>
-    </div>
+    </MainTemplate>
     
   );
 };

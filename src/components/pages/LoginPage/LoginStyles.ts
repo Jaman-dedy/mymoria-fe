@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface MessageContainerProps {
+  status?: 'success' | 'error' | 'default'; // Define possible status values
+}
+
 export const Container = styled.div`
   display: flex;
   width: 100vw;
@@ -37,13 +41,24 @@ export const LeftSide = styled.div`
   }
 `;
 
-export const MessageContainer = styled.div`
-padding: 20px;
-background-color: #CAFDF5;
-border-radius: 6px;
-font-style: italic;
-margin-bottom: 20px
-`
+const getStatusColor = (status?: string) => {
+  switch (status) {
+    case 'success':
+      return '#8AFF8A';
+    case 'error':
+      return '#FFBABA';
+    default:
+      return '#CAFDF5';
+  }
+};
+
+export const MessageContainer = styled.div<MessageContainerProps>`
+  padding: 20px;
+  background-color: ${(props:any) => getStatusColor(props.status)};
+  border-radius: 6px;
+  font-style: italic;
+  margin-bottom: 20px;
+`;
 
 export const Title = styled.h2`
   font-size: 24px;

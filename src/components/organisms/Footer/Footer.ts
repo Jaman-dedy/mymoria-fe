@@ -5,6 +5,7 @@ export const FooterContainer = styled.div`
   color: #fff;
   padding: 20px;
   text-align: center;
+  margin-top: auto;
 `;
 
 export const SocialIcons = styled.div`

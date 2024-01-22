@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
-import NavBar from '../../organisms/Navbar';
-import Footer from '../../organisms/Footer';
 import { BackButton, Container, DescriptionContainer, GalleryContainer, GalleryImage, PreviewContainer, PreviewImage, Price, ProductName, RatingContainer, RatingStar, WishlistButton } from './DetailsStyles';
+import MainTemplate from '../../template/MainTemplate';
 
 
 
@@ -26,8 +25,7 @@ const ProductDetailsPage: React.FC = () => {
   };
 
   return (
-    <div>
-        <NavBar/>
+    <MainTemplate>
         <Container>
         <BackButton onClick={handleBackButtonClick}>
         &lt; Back
@@ -71,8 +69,7 @@ const ProductDetailsPage: React.FC = () => {
       </p>
       <WishlistButton>Add to Wishlist</WishlistButton>
     </Container>
-    <Footer/>
-    </div>
+    </MainTemplate>
     
   );
 };
