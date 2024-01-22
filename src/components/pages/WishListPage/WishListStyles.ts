@@ -65,9 +65,10 @@ export const RemoveButton = styled.button`
 `;
 
 export const BackButton = styled.button`
-  color: #01a76f;
+  color: #0D0C22;
   padding: 10px 15px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -75,7 +76,7 @@ export const BackButton = styled.button`
   margin-bottom: 20px;
 
   &:hover {
-    color: #006644;
+    color: #15133c;
   }
 `;
 

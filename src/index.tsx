@@ -18,7 +18,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <React.Suspense fallback={<div>Loading...</div>}>
       <RouterProvider router={AppRouter} />
+      </React.Suspense>
       <ToastContainer/>
     </Provider>
   </React.StrictMode>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
-import { BackButton, Container, DescriptionContainer, GalleryContainer, GalleryImage, PreviewContainer, PreviewImage, Price, ProductName, RatingContainer, RatingStar, WishlistButton } from './DetailsStyles';
+import { BackButton, Container, DescriptionContainer, GalleryContainer, GalleryImage, PreviewContainer, PreviewImage, Price, ProductName, RatingContainer, RatingStar } from './DetailsStyles';
 import MainTemplate from '../../template/MainTemplate';
 
 
@@ -67,7 +67,6 @@ const ProductDetailsPage: React.FC = () => {
       <p>
         <strong>Number:</strong> {translations.properties?.number}
       </p>
-      <WishlistButton>Add to Wishlist</WishlistButton>
     </Container>
     </MainTemplate>
     

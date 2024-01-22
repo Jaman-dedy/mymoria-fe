@@ -2,10 +2,10 @@ import React from 'react';
 import {
     createBrowserRouter,
   } from "react-router-dom";
-import HomeContainer from '../containers/Product';
-import ProductDetailsPage from '../components/pages/ProductDetailsPage'
-import LoginPage from '../components/pages/LoginPage';
-import WishListContainer from '../containers/Wishlist';
+const LoginPage = React.lazy(() => import('../components/pages/LoginPage'));
+const WishListContainer = React.lazy(() => import('../containers/Wishlist'));
+const ProductDetailsPage = React.lazy(() => import('../components/pages/ProductDetailsPage'));
+const HomeContainer = React.lazy(() => import('../containers/Product'));
 
 
 const AppRouter = createBrowserRouter([
