@@ -20,7 +20,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         placeholder="Search..."
         onChange={handleInputChange}
       />
-      <SearchIcon>
+      <SearchIcon data-testid="searchIcon">
         <FontAwesomeIcon icon={faSearch} />
       </SearchIcon>
     </SearchContainer>

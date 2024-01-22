@@ -17,12 +17,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
       <React.Suspense fallback={<div>Loading...</div>}>
+    <Provider store={store}>
       <RouterProvider router={AppRouter} />
+    </Provider>
       </React.Suspense>
       <ToastContainer/>
-    </Provider>
   </React.StrictMode>
 );
 
