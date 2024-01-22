@@ -78,7 +78,7 @@ const HeartIcon = styled(FontAwesomeIcon)`
   color: #ccc;
   transition: color 0.3s;
   ${WishlistIconContainer}:hover & {
-    color: #e74c3c; // Red color on hover
+    color: #e74c3c; 
   }
 `;
 
@@ -132,10 +132,8 @@ const ProductCard: React.FC<ProductProps | any> = ({product}) => {
   };
 
   const handleAddToWishlist = (e:any) => {
-    e.stopPropagation(); // Prevent navigating to the product detail page
-    // onAddToWishlist(product); // Call the function to add to the wishlist
+    e.stopPropagation(); 
     dispatch(addToWishlist(product.id))
-    console.log('added :>> ', product.id);
   };
 
   return (

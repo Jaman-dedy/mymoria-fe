@@ -31,6 +31,7 @@ const WishlistItem = styled.div`
 
   &:hover {
     background-color: #f5f8fa;
+    cursor: pointer;
   }
 `;
 
@@ -99,26 +100,33 @@ const WishlistPage: React.FC<WishListItems> = ({wishlist}) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate();
 
-  const handleRemoveItem = (itemId: string) => {
+  const handleRemoveItem = (e:any, itemId: string) => {
+    e.stopPropagation();
     dispatch(removeToWishlist(itemId))
   };
+
+  const handleClickWishlist = (product:any) => {
+    navigate(`/products/${product.id}`, {
+      state: product
+    })
+  }
 
   return (
     <div>
         <NavBar/>
        <Container>
-      <BackButton onClick={() => navigate('/')}>
+      <BackButton onClick={() => navigate(-1)}>
         <ArrowIcon>&lt;</ArrowIcon> Back
       </BackButton>
       <WishlistTitle>My Wishlist</WishlistTitle>
       {wishlist.length > 0 && wishlist.map((item: any) => (
-        <WishlistItem key={item.id}>
+        <WishlistItem onClick={() => handleClickWishlist(item)}  key={item.id}>
           <ItemImage src={item.pictures[0]?.url} alt={item.translations?.name} />
           <ItemDetails>
             <ItemName>{item.translations?.shortname}</ItemName>
             <ItemDescription>{item.translations?.name}</ItemDescription>
           </ItemDetails>
-          <RemoveButton onClick={() => handleRemoveItem(item.id)}>
+          <RemoveButton onClick={(e) => handleRemoveItem(e,item.id)}>
             <FontAwesomeIcon icon={faTrash} />
           </RemoveButton>
         </WishlistItem>

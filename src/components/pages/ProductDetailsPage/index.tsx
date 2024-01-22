@@ -143,7 +143,7 @@ const ProductDetailsPage: React.FC = () => {
   };
 
   const handleBackButtonClick = () => {
-    navigate('/');
+    navigate(-1);
   };
 
   return (
