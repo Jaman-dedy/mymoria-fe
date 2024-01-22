@@ -1,22 +1,25 @@
-const username = 'admin';
-const password = 'password123';
 
-const headers = new Headers();
-headers.set('Authorization', 'Basic ' + btoa(`${username}:${password}`));
+const storedUser = localStorage.getItem('authenticatedUser');
 
-export const fetchApi = async (url:string, method:string, data?:any) => {
-  const response = await fetch(url, {
-    method,
-    headers: {
-      'Authorization': 'Basic ' + btoa(`${username}:${password}`),
-      'Content-Type': 'application/json'
-    },
-    ...(data && { body: JSON.stringify(data) }), 
-  });
+const API_URL: any = process.env.REACT_APP_API_URL;
 
-  if (!response.ok) {
-    throw new Error('Failed to call the pai');
+export const fetchApi = async (url: string, method: string, data?: any) => {
+  if (storedUser) {
+    const { username, password } = JSON.parse(storedUser);
+    const uri: any = `${API_URL}/${url}`
+    const response = await fetch(uri, {
+      method,
+      headers: {
+        'Authorization': 'Basic ' + btoa(`${username}:${password}`),
+        'Content-Type': 'application/json'
+      },
+      ...(data && { body: JSON.stringify(data) }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to call the pai');
+    }
+    return response.json();
   }
 
-  return response.json();
 };

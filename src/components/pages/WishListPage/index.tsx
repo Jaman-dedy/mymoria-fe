@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
+import {  useAppDispatch } from '../../../hook/useDispatch'
 import Footer from '../../organisms/Footer';
 import NavBar from '../../organisms/Navbar';
+import { removeToWishlist } from '../../../store/actions/wishlist/removeWishList';
 
 const Container = styled.div`
   max-width: 800px;
@@ -93,9 +96,11 @@ interface WishListItems {
 }
 
 const WishlistPage: React.FC<WishListItems> = ({wishlist}) => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate();
 
-  const handleRemoveItem = (itemId: number) => {
+  const handleRemoveItem = (itemId: string) => {
+    dispatch(removeToWishlist(itemId))
   };
 
   return (

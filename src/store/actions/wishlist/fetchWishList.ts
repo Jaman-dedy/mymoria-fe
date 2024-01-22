@@ -10,9 +10,6 @@ import { fetchApi } from '../../../helper/fetchApi';
 import { Wishlist } from '../../../types';
 
 
-const API_URL:any = process.env.REACT_APP_API_URL;
-
-
 export const fetchWishlistRequest = () => ({
   type: FETCH_WISHLIST_REQUEST,
 });
@@ -32,7 +29,7 @@ export const fetchWishlist = () => {
     dispatch(fetchWishlistRequest());
 
     try {
-      const data = await fetchApi(`${API_URL}/wishlist/`, 'GET');
+      const data = await fetchApi(`/wishlist/`, 'GET');
       dispatch(fetchWishlistSuccess(data));
     } catch (error: any) {
       dispatch(fetchWishlistFailure(error.message));

@@ -8,8 +8,6 @@ import {
 
 import { fetchApi } from '../../../helper/fetchApi';
 
-const API_URL:any = process.env.REACT_APP_API_URL;
-
 interface Product {
   id: number;
   name: string;
@@ -34,7 +32,7 @@ export const fetchProducts = (category: string) => {
     dispatch(fetchProductsRequest());
 
     try {
-      const data = await fetchApi(`${API_URL}/products/${category}`, 'GET');
+      const data = await fetchApi(`/products/${category}`, 'GET');
       dispatch(fetchProductsSuccess(data));
     } catch (error: any) {
       dispatch(fetchProductsFailure(error.message));
